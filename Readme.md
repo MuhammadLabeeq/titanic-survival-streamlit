@@ -4,12 +4,31 @@ An interactive Machine Learning web application that predicts passenger survival
 
 ---
 
-## 📌 Features
+## 🌐 Live Demo
 
-* **Real-time Predictions:** Calculates survival probability and displays model confidence percentage dynamically.
-* **Domain Feature Engineering:** Uses key predictors including title extractions, family dynamics (`FamilySize`, `IsAlone`), cabin indicators, and ticket-group adjusted fare (`FarePerPerson`).
-* **Regularized Random Forest Model:** Trained and validated using 5-Fold Cross-Validation on Kaggle's Titanic dataset to prevent overfitting.
-* **Interactive UI:** Clean user interface with sliders, dropdowns, and numeric inputs built using Streamlit.
+👉 **[Launch Interactive Web App](https://titanic-survival-app-d22fyd9byexejjq37k9drq.streamlit.app/)**
+
+---
+
+## 📊 Model Performance & Metrics
+
+The prediction model is a regularized **Random Forest Classifier** trained and cross-validated on the [Kaggle Titanic Dataset](https://www.kaggle.com/competitions/titanic/data):
+
+* **5-Fold Cross-Validation Accuracy:** **82.72%** (± 1.45%)
+* **Kaggle Public Leaderboard Score:** **0.77990** (~78.0% Accuracy)
+* **Generalization Strategy:** Hyperparameters are constrained (`max_depth=4`, `min_samples_leaf=2`) combined with group-adjusted feature engineering (`FarePerPerson`, title extraction) to reduce overfitting on unseen test data.
+
+---
+
+## 📌 Key Features
+
+* **Real-time Predictions:** Calculates survival status along with probability confidence percentages dynamically.
+* **Domain Feature Engineering:** Integrates domain-specific variables:
+  * **Title Extraction:** Maps social status derived from passenger names (*Mr*, *Miss*, *Mrs*, *Master*, *Rare*).
+  * **Group-Adjusted Fare (`FarePerPerson`):** Calculates individual ticket cost by dividing total ticket fare by ticket group size.
+  * **Family Dynamics:** Computes `FamilySize`, `IsAlone`, and `IsChild` indicators.
+  * **Cabin Status (`HasCabin`):** Tracks cabin allocation.
+* **Interactive Interface:** Clean Streamlit UI equipped with input sliders, dropdowns, and numeric fields.
 
 ---
 
@@ -18,8 +37,8 @@ An interactive Machine Learning web application that predicts passenger survival
 * **Language:** Python 3.10+
 * **Machine Learning:** Scikit-Learn, Joblib
 * **Data Processing:** Pandas, NumPy
-* **Frontend / Web Framework:** Streamlit
-* **Deployment:** Streamlit Community Cloud / GitHub
+* **Frontend Framework:** Streamlit
+* **Deployment & Hosting:** Streamlit Community Cloud, GitHub
 
 ---
 
@@ -31,4 +50,4 @@ titanic-survival-streamlit/
 ├── app.py                 # Streamlit web application script
 ├── titanic_model.pkl      # Pre-trained Random Forest model
 ├── requirements.txt       # Python environment dependencies
-└── README.md              # Project documentation
+└── Readme.md              # Project documentation
